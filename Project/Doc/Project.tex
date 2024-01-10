@@ -1,0 +1,153 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Cleese Assignment (For Students)
+% LaTeX Template
+% Version 2.0 (27/5/2018)
+%
+% This template originates from:
+% http://www.LaTeXTemplates.com
+%
+% Author:
+% Vel (vel@LaTeXTemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+\RequirePackage[2020-02-02]{latexrelease}
+\documentclass[11pt]{article}
+\usepackage{float}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+\usepackage{amsmath, amssymb}
+\DeclareMathOperator{\sinc}{sinc}
+\DeclareMathOperator{\sgn}{sgn}
+\usepackage[american]{circuitikz}
+
+\input{structure.tex} % Include the file specifying the document structure and custom commands
+
+%----------------------------------------------------------------------------------------
+%	ASSIGNMENT INFORMATION
+%----------------------------------------------------------------------------------------
+
+% Required
+\newcommand{\assignmentQuestionName}{Task} % The word to be used as a prefix to question numbers; example alternatives: Problem, Exercise
+\newcommand{\assignmentClass}{Electrical Circuits (Taught by Mohammad Hadi)\\Final Project (Due on DDD.,\ mmm.\ dd,\ yyyy)} % Course (Lecturer)\\Assignment (Due date)
+\newcommand{\assignmentTitle}{} % Assignment title or name
+\newcommand{\assignmentAuthorName}{Student Name\\Student Number} % Student name\\Student number
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+\lstset{language=Python,%
+	basicstyle={\scriptsize},
+	breaklines=true,%
+	morekeywords={matlab2tikz},
+	keywordstyle=\color{blue},%
+	morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+	identifierstyle=\color{black},%
+	stringstyle=\color{mylilas},
+	commentstyle=\color{mygreen},%
+	showstringspaces=false,%without this there will be a symbol in the places where there is a space
+	numbers=left,%
+	numberstyle={\tiny \color{black}},% size of the numbers
+	numbersep=5pt, % this defines how far the numbers are from the text
+	emph=[1]{break},emphstyle=[1]\color{red}, %some words to emphasise
+	%emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+\textbf{Feel free to do one of the following tasks as your final project. I personally prefer the engineering task 
+although it needs to have access to an oscilloscope. In my view, you become familiar with many practical points while doing the engineering task. }
+
+\assignmentSection{Engineering Task}
+
+%----------------------------------------------------------------------------------------
+%	Task 1
+%----------------------------------------------------------------------------------------
+
+\begin{question}
+
+\questiontext{Stereo audio has two audio signals designed for two separate audio channels, which creates a perception of space. If you have a stereo headphone, each audio signal is played separately on a speaker. The two audio signals can be injected to an oscilloscope in xy mode to create a Lissajous curve.}
+
+\begin{figure}[H] 
+\begin{center}
+\includegraphics[scale=0.2]{Fig/stereo.jpg}
+\caption{\label{fig:stereo} Stereo audio on speakers.}
+\end{center}
+\end{figure}  
+
+%--------------------------------------------
+\begin{subquestion}{Write a MATLAB/Python code to create suitable stereo audio such that the corresponding Lissajous curve on an oscilloscope looks like a heart shape. Connect the audio output of your laptop using a stereo audio jack to the channels of an oscilloscope and see the heart-shaped Lissajous curve. } 
+\answer{
+	If we want to use python, we must use "sounddevice", "numpy" and "matplotlib.pyplot" library. In case of making heart once the program is executed, it will generate a sine wave for X axis and a combination of four cosine waves for Y axis with a frequency of 44100 Hz and duration of 10 seconds. The signal will be outputted through the specified audio output device, which should be connected to your oscilloscope via the AUX cable.\\
+	
+	\textbf{Heart:}
+	\lstinputlisting{Fig/Heart.py}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.4,angle=0]{Fig/Heart.jpg}
+		\caption{Heart in xy mode of oscilloscope.} \label{fig:cir2}
+	\end{figure}
+}
+\end{subquestion}
+%--------------------------------------------
+\begin{subquestion}{Extend your code such that common geometric shapes like circle, ellipse, square, and so on appear as a Lissajous curve on the oscilloscope.} 
+\answer{
+	In case of making circle once the program is executed, it will generate a cosine wave for X axis and sine waves for Y axis with a frequency of 44100 Hz and duration of 10 seconds.
+	\textbf{Circle:}\\
+	\lstinputlisting{Fig/Circle.py}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.4,angle=0]{Fig/Circle.jpg}
+		\caption{Circle in xy mode of oscilloscope.} \label{fig:cir2}
+	\end{figure}
+	In case of making Ellipse once the program is executed, it will generate a cosine wave for X axis and sine waves for Y axis with a frequency of 44100 Hz and duration of 10 seconds.
+	\textbf{Ellipse:}\\
+	\lstinputlisting{Fig/Ellipse.py}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.4,angle=0]{Fig/Ellipse.jpg}
+		\caption{Ellipse in xy mode of oscilloscope.} \label{fig:cir2}
+	\end{figure}
+	\textbf{Square:}\\
+	\lstinputlisting{Fig/Square.py}
+	\textbf{Diamond:}\\
+	\lstinputlisting{Fig/Diamond.py}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.4,angle=0]{Fig/Diamond.jpg}
+		\caption{Diamond in xy mode of oscilloscope.} \label{fig:cir2}
+	\end{figure}
+	\textbf{Animated Circle:}\\
+	\lstinputlisting{Fig/AnimatedCircle.py}
+}
+\end{subquestion}
+
+%--------------------------------------------
+\begin{subquestion}{Prepare a short report and describe your work concisely. Use suitable figures or equations to  better describe different parts of your code and to make your report more readable and understandable. Take a short video of yourself demonstrating the creation of the desired Lissajous curves. 
+} 
+\answer{}
+\end{subquestion}
+
+
+%--------------------------------------------
+\begin{subquestion}{\textbf{Bonus!} Create a GUI for your code such that the desired curve is taken as a two-dimensional function $f(x,y)=0$ and its corresponding Lissajous curve appears on the oscilloscope.
+} 
+\answer{}
+\end{subquestion}
+
+%--------------------------------------------
+\begin{subquestion}{\textbf{Bonus!} Write your report in \LaTeX.
+} 
+\end{subquestion}
+
+\end{question}
+
+\end{document}
